@@ -7,14 +7,14 @@ import rootReducer from './reducers/index';
 
 // Import data from client/data
 import comments from './data/comments';
-import comments from './data/posts';
+import posts from './data/posts';
 
 // create an object for default data
 const defaultState = {
   posts,
   // Same as `posts: posts`
   comments
-}
+};
 
 
 const store = createStore(rootReducer, defaultState); // rootReducer is how to interface with Redux.

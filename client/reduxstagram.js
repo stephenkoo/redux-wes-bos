@@ -12,15 +12,20 @@ import PhotoGrid from './components/PhotoGrid';
 
 // import react router deps
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
+import {Provider} from 'react-redux';
+import store, {history} from './store';
 
 const router = (
-  <Router history={browserHistory}>
-    <Route path="/" components={Main}>
-      <IndexRoute component={PhotoGrid}></IndexRoute>
-      <Route path="/view/:postId" component={Single}></Route>
-    </Route>
-  </Router>
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path="/" components={Main}>
+        <IndexRoute component={PhotoGrid}></IndexRoute>
+        <Route path="/view/:postId" component={Single}></Route>
+      </Route>
+    </Router>
+  </Provider>
 )
+// Swapped history={browserHistory} with {history} which was created in store.js which syncs browserHistory with store
 
 // render(<p>hi</p>, document.getElementById('root'));
 // render(<Main/>, document.getElementById('root'));

@@ -7,11 +7,12 @@ export function increment(index) {
     // Same as `index: index`
   }
 }
+// You can activate this by selecting <Provider> in React dev tool, then typing into dev tools `$r.store.dispatch({type: 'INCREMENT_LIKES', index: 0});`
 
 // add comment
 export function addComment(postId, author, comment) {
   return {
-    type: 'ADD_COMMENT'
+    type: 'ADD_COMMENT',
     postId,
     author,
     comment
@@ -21,7 +22,7 @@ export function addComment(postId, author, comment) {
 // remove comment
 export function removeComment(postId, i) {
   return {
-    type: 'REMOVE_COMMENT'
+    type: 'REMOVE_COMMENT',
     postId,
     i
   }

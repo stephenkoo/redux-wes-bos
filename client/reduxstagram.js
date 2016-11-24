@@ -6,7 +6,7 @@ import {render} from 'react-dom';
 import css from './styles/style.styl';
 
 // Import Components
-import Main from './components/Main';
+import App from './components/App'; // Changed /Main to /App, since instead of importing Main.js directly, we use App to inject state & actionCreator props into Main.
 import Single from './components/Single';
 import PhotoGrid from './components/PhotoGrid';
 
@@ -18,7 +18,7 @@ import store, {history} from './store';
 const router = (
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" components={Main}>
+      <Route path="/" components={App}>
         <IndexRoute component={PhotoGrid}></IndexRoute>
         <Route path="/view/:postId" component={Single}></Route>
       </Route>
@@ -26,6 +26,11 @@ const router = (
   </Provider>
 )
 // Swapped history={browserHistory} with {history} which was created in store.js which syncs browserHistory with store
+
+// Passing state into child components with Redux: Unlike react which requires you to pass it down via props every layer downwards, we can use Redux's connect to inject data directly to desired level
+// We will expose data from Provider to Main component (3 levels down) & expose actionCreator functions to buttons using Connect 
+
+// Changed <Route path="/" components={Main}> to {App}
 
 // render(<p>hi</p>, document.getElementById('root'));
 // render(<Main/>, document.getElementById('root'));

@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import {Link} from 'react-router';
 import CSSTransitionGroup from 'react-addons-css-transition-group'; // heart animation when liking post
 
@@ -23,7 +23,8 @@ const Photo = React.createClass({
         <figcaption>
           <p>{post.caption}</p>
           <div className="control-buttons">
-            <button classname="likes">&hearts; {post.likes}</button>
+            <button onClick={this.props.increment.bind(null, i)} className="likes">&hearts; {post.likes}</button>
+          {/*How did we pass in index number of increment(index)? increment(i) would just run it on page load. Instead, call .bind - null is first parameter because React does all the binding for us, & index the 2nd parameter */}
             <Link className="button" to={`/view/${post.code}`}>
               <span className="speech-bubble"></span>
               {comments[post.code] ? comments[post.code].length : 0}

@@ -17,7 +17,7 @@ class Main extends Component {
     return (
       <div>
         <h1>
-          <Link to="/">sad</Link>
+          <Link to="/">Inlightagram</Link>
         </h1>
       {React.cloneElement(this.props.children, this.props)}
       </div>

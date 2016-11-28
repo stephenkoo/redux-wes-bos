@@ -8,10 +8,11 @@ const Comments = React.createClass({
         <p>
           <strong>{comment.user}</strong>
           {comment.text}
-          <button className="remove-comment">&times;</button>
+          <button className="remove-comment" onClick={this.props.removeComment.bind(null, this.props.params.postId, i)}>&times;</button>
         </p>
       </div>
     )
+    // onClick={this.props.removeComment} calls removeComment reducer which takes 2 components
   },
   handleSubmit (e) {
     e.preventDefault(); // prevents event refreshing on submit
@@ -22,9 +23,10 @@ const Comments = React.createClass({
     const comment = this.refs.comment.value;
     // console.log(postId, author, comment);
     // We're using the addComments reducer to update state in actionCreators.js
-    this.props.addComments(postId, author, comment);
+    console.log(this.props);
+    this.props.addComment(postId, author, comment);
     // Change our comments reducer in reducers/comments.js to display it
-
+    this.refs.commentForm.reset(); // Removes comments in form when subitted
   },
   render() {
     return (
